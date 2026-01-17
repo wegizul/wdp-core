@@ -51,13 +51,13 @@ class Pengguna extends CI_Controller
 			$level = "";
 			switch ($pengguna->log_level) {
 				case 1:
-					$level = "<span class='badge badge-info py-1 px-2'><i class='fas fa-user-shield'></i> Super Admin</span>";
+					$level = "<span class='badge bg-info py-1 px-2'><i class='fas fa-user-shield'></i> Super Admin</span>";
 					break;
 				case 2:
-					$level = "<span class='badge badge-info py-1 px-2'><i class='fas fa-user-edit'></i> Admin</span>";
+					$level = "<span class='badge bg-info py-1 px-2'><i class='fas fa-user-edit'></i> Admin</span>";
 					break;
 				case 3:
-					$level = "<span class='badge badge-info py-1 px-2'><i class='fas fa-eye'></i> Investor</span>";
+					$level = "<span class='badge bg-info py-1 px-2'><i class='fas fa-eye'></i> Investor</span>";
 					break;
 			}
 			$row = array();

@@ -13,49 +13,40 @@ company: https://webdeveloperpku.com -->
   <title><?= $this->session->userdata("nama"); ?> | <?= $page ?></title>
 
   <link rel="icon" href="<?= base_url("assets/"); ?>files/logo-rai-persegi.png" type="image/jpg">
+  
+  <!-- Google Font: Source Sans 3 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css" crossorigin="anonymous">
+  
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" crossorigin="anonymous">
+  
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- Theme style -->
-  <link rel="stylesheet" href="<?= base_url("assets"); ?>/dist/css/adminlte.min.css">
-  <!-- Tempusdominus Bbootstrap 4 -->
-  <link rel="stylesheet" href="<?= base_url("assets"); ?>/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="<?= base_url("assets"); ?>/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="<?= base_url("assets"); ?>/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="<?= base_url("assets"); ?>/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-  <!-- Select 2 -->
-  <link rel="stylesheet" href="<?= base_url("assets"); ?>/plugins/select2/css/select2.css">
+  
+  <!-- OverlayScrollbars -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/styles/overlayscrollbars.min.css" crossorigin="anonymous">
+  
+  <!-- AdminLTE 4 CSS -->
+  <link rel="stylesheet" href="<?= base_url("adminlte4"); ?>/css/adminlte.min.css">
+  
+  <!-- DataTables Bootstrap 5 -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css">
+  
+  <!-- Select2 Bootstrap 5 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css">
+  
   <!-- Toastr -->
-  <link rel="stylesheet" href="<?= base_url("assets"); ?>/plugins/toastr/toastr.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+  
   <!-- Daterangepicker -->
-  <link rel="stylesheet" href="<?= base_url("assets"); ?>/plugins/daterangepicker/daterangepicker.css">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css">
+
   <style>
     body {
       padding-right: 0px !important;
-    }
-
-    /* width */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    /* Track */
-    ::-webkit-scrollbar-track {
-      box-shadow: inset 0 0 5px grey;
-      border-radius: 5px;
-    }
-
-    /* Handle */
-    ::-webkit-scrollbar-thumb {
-      background: #e3e3e3;
-      border-radius: 5px;
-    }
-
-    /* Handle on hover */
-    ::-webkit-scrollbar-thumb:hover {
-      background: #a1a1a1;
     }
 
     .switch {
@@ -103,7 +94,6 @@ company: https://webdeveloperpku.com -->
       transform: translateX(20px);
     }
 
-
     .info-box {
       display: flex;
       align-items: center;
@@ -115,7 +105,6 @@ company: https://webdeveloperpku.com -->
       align-items: center;
       justify-content: center;
       font-size: 2rem;
-      /* ukuran default */
       width: 60px;
       height: 60px;
       border-radius: 0.5rem;
@@ -176,25 +165,16 @@ company: https://webdeveloperpku.com -->
   </style>
 </head>
 
-<body class="hold-transition sidebar-mini layout-navbar-fixed layout-fixed">
+<body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
   <input type="hidden" id="base_link" value="<?= base_url(); ?>">
-  <!-- jQuery -->
-  <script src="<?= base_url("assets"); ?>/plugins/jquery/jquery.min.js"></script>
-  <!-- Bootstrap 4 -->
-  <script src="<?= base_url("assets"); ?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- AdminLTE App -->
-  <script src="<?= base_url("assets"); ?>/dist/js/adminlte.min.js"></script>
-  <!-- Custom -->
-  <script src="<?= base_url("assets"); ?>/dist/js/ubah_pass.js"></script>
-  <!-- Wysihtml5 -->
-  <script src="<?= base_url("assets"); ?>/dist/ckeditor/ckeditor.js"></script>
-
+  
   <!-- Modal Konfirmasi Ya Tidak -->
-  <div class="modal fade" id="frmKonfirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
+  <div class="modal fade" id="frmKonfirm" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title" id="jdlKonfirm">Konfirmasi Hapus</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div id="isiKonfirm"></div>
@@ -202,18 +182,19 @@ company: https://webdeveloperpku.com -->
           <input type="hidden" name="mode" id="mode">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" id="yaKonfirm"><i class="fas fa-trash-alt"></i> Hapus</button>
-          <button data-dismiss="modal" class="btn btn-primary btn-sm" id="tidakKonfirm"><i class="fas fa-times-circle"></i> Batal</button>
+          <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal" id="yaKonfirm"><i class="fas fa-trash-alt"></i> Hapus</button>
+          <button data-bs-dismiss="modal" class="btn btn-primary btn-sm" id="tidakKonfirm"><i class="fas fa-times-circle"></i> Batal</button>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="modal fade" id="frmKonfirm2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
+  <div class="modal fade" id="frmKonfirm2" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title" id="jdlKonfirm2">Konfirmasi Hapus</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div id="isiKonfirm2"></div>
@@ -223,18 +204,19 @@ company: https://webdeveloperpku.com -->
           <input type="hidden" name="mode" id="mode">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" id="yaKonfirm2"><i class="fas fa-trash-alt"></i> Hapus</button>
-          <button data-dismiss="modal" class="btn btn-primary btn-sm" id="tidakKonfirm2"><i class="fas fa-times-circle"></i> Batal</button>
+          <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal" id="yaKonfirm2"><i class="fas fa-trash-alt"></i> Hapus</button>
+          <button data-bs-dismiss="modal" class="btn btn-primary btn-sm" id="tidakKonfirm2"><i class="fas fa-times-circle"></i> Batal</button>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="modal fade" id="frmKonfirm3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
+  <div class="modal fade" id="frmKonfirm3" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title" id="jdlKonfirm3">Konfirmasi Logout</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div id="isiKonfirm3"></div>
@@ -243,7 +225,7 @@ company: https://webdeveloperpku.com -->
         </div>
         <div class="modal-footer">
           <a href="<?= base_url('Login/logout') ?>" type="button" class="btn btn-danger btn-sm"><i class="fas fa-sign-out-alt"></i> Keluar</a>
-          <button data-dismiss="modal" class="btn btn-primary btn-sm" id="tidakKonfirm3"><i class="fas fa-times-circle"></i> Batal</button>
+          <button data-bs-dismiss="modal" class="btn btn-primary btn-sm" id="tidakKonfirm3"><i class="fas fa-times-circle"></i> Batal</button>
         </div>
       </div>
     </div>
@@ -251,128 +233,129 @@ company: https://webdeveloperpku.com -->
 
   <input type="hidden" name="base_link" id="base_link" value="<?= base_url() ?>">
 
-  <!-- Bootstrap modal -->
-  <div class="modal fade" id="ubah_pass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
+  <!-- Bootstrap modal Ubah Password -->
+  <div class="modal fade" id="ubah_pass" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title"><i class="fas fa-lock"></i> Ubah Password</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <form method="post" id="frm_ubahpass">
           <div class="modal-body form">
             <input type="hidden" name="pgnID" value="<?php $this->session->userdata("id_user"); ?>">
-            <div class="col-lg">
-              <div class="input-group input-group-sm mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">Password Lama</span>
-                </div>
-                <input type="password" class="form-control infonya" name="log_pass" id="log_pass" value="" required>
-              </div>
+            <div class="mb-3">
+              <label class="form-label">Password Lama</label>
+              <input type="password" class="form-control infonya" name="log_pass" id="log_pass" value="" required>
             </div>
-            <div class="col-lg">
-              <label>Password Baru</label>
-              <div class="input-group input-group-sm mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                </div>
+            <div class="mb-3">
+              <label class="form-label">Password Baru</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-lock"></i></span>
                 <input type="password" class="form-control infonya" name="log_passBaru" id="log_passBaru" value="" required>
               </div>
             </div>
-            <div class="col-lg">
-              <label>Konfirmasi Password Baru</label>
-              <div class="input-group input-group-sm mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                </div>
+            <div class="mb-3">
+              <label class="form-label">Konfirmasi Password Baru</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-lock"></i></span>
                 <input type="password" class="form-control infonya" name="log_passBaru2" id="log_passBaru2" value="" required>
               </div>
             </div>
-            <div class="alert alert-danger animated fadeInDown" role="alert" id="up_infoalert">
-              <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <div class="alert alert-danger d-none" role="alert" id="up_infoalert">
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               <div id="up_pesan"></div>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="submit" id="up_simpan" class="btn btn-primary btn-sm"><i class="fas fa-check-circle"></i> Simpan</a>
-              <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fas fa-times-circle"></i> Batal</button>
+            <button type="submit" id="up_simpan" class="btn btn-primary btn-sm"><i class="fas fa-check-circle"></i> Simpan</button>
+            <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal"><i class="fas fa-times-circle"></i> Batal</button>
           </div>
         </form>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
+      </div>
+    </div>
+  </div>
 
-
-  <div class="wrapper">
-    <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-light navbar-white">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-angles-right"></i></i></a>
-        </li>
-      </ul>
-
-      <!-- Right navbar links -->
-      <?php if ($this->session->userdata("id_user")) { ?>
-        <ul class="navbar-nav ml-auto">
-          <!-- Messages Dropdown Menu -->
-          <li class="nav-item" title="Logout">
-            <a class="nav-link" href="#" role="button" onClick="logout(<?= $this->session->userdata("id_user") ?>)">
-              <i class="fas fa-sign-out-alt"></i>
-            </a>
-          </li>
-        </ul>
-      <?php } else { ?>
-        <ul class="navbar-nav ml-auto">
-          <!-- Messages Dropdown Menu -->
+  <!--begin::App Wrapper-->
+  <div class="app-wrapper">
+    <!--begin::Header-->
+    <nav class="app-header navbar navbar-expand bg-body">
+      <div class="container-fluid">
+        <!--begin::Start Navbar Links-->
+        <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="<?= base_url("Login"); ?>" role="button">
-              <i class="fas fa-user"></i> Login
+            <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button">
+              <i class="bi bi-list"></i>
             </a>
           </li>
         </ul>
-      <?php } ?>
+        <!--end::Start Navbar Links-->
+
+        <!--begin::End Navbar Links-->
+        <?php if ($this->session->userdata("id_user")) { ?>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item" title="Logout">
+              <a class="nav-link" href="#" role="button" onClick="logout(<?= $this->session->userdata("id_user") ?>)">
+                <i class="fas fa-sign-out-alt"></i>
+              </a>
+            </li>
+          </ul>
+        <?php } else { ?>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="<?= base_url("Login"); ?>" role="button">
+                <i class="fas fa-user"></i> Login
+              </a>
+            </li>
+          </ul>
+        <?php } ?>
+        <!--end::End Navbar Links-->
+      </div>
     </nav>
-    <!-- /.navbar -->
+    <!--end::Header-->
 
-    <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-light-primary elevation-4">
-      <a href="<?= base_url() ?>" class="brand-link" style="background-color:#fff;">
-        <img src="<?= base_url("assets"); ?>/files/logo.png" alt="Logo" class="brand-image">
-        <span class="brand-text font-weight-dark" style="color: #010536;"><b>WDP CORE</b></span>
-      </a>
-      <!-- Sidebar -->
-
-      <div class="sidebar">
-        <!-- Sidebar user (optional) -->
-        <div class="user-panel mt-1 pb-3 mb-3 d-flex">
+    <!--begin::Sidebar-->
+    <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
+      <!--begin::Sidebar Brand-->
+      <div class="sidebar-brand">
+        <a href="<?= base_url() ?>" class="brand-link">
+          <img src="<?= base_url("assets"); ?>/files/logo.png" alt="Logo" class="brand-image opacity-75 shadow">
+          <span class="brand-text fw-light"><b>WDP CORE</b></span>
+        </a>
+      </div>
+      <!--end::Sidebar Brand-->
+      
+      <!--begin::Sidebar Wrapper-->
+      <div class="sidebar-wrapper">
+        <!-- Sidebar user -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="<?= base_url('assets/dist/img/user-blank.png'); ?>" class="img-circle elevation-2 mt-3" alt="User Image">
+            <img src="<?= base_url('assets/dist/img/user-blank.png'); ?>" class="img-size-50 rounded-circle me-3" alt="User Image" style="width: 40px; height: 40px;">
           </div>
           <div class="info">
-            <a href="#" class="d-block"><?= $this->session->userdata("nama"); ?></a>
-            <span class="badge badge-warning"><?php
-                                              switch ($this->session->userdata("level")) {
-                                                case 1:
-                                                  echo "Super Admin";
-                                                  break;
-                                                case 2:
-                                                  echo "Admin";
-                                                  break;
-                                                case 3:
-                                                  echo "Investor";
-                                                  break;
-                                              }; ?></span>
+            <a href="#" class="d-block text-white text-decoration-none"><?= $this->session->userdata("nama"); ?></a>
+            <span class="badge text-bg-warning"><?php
+              switch ($this->session->userdata("level")) {
+                case 1:
+                  echo "Super Admin";
+                  break;
+                case 2:
+                  echo "Admin";
+                  break;
+                case 3:
+                  echo "Investor";
+                  break;
+              }; ?></span>
           </div>
         </div>
-        <!-- Sidebar Menu -->
+        
         <nav class="mt-2">
-          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!--begin::Sidebar Menu-->
+          <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
             <li class="nav-item">
               <a href="<?= base_url("Dashboard/tampil"); ?>" class="nav-link">
                 <i class="nav-icon fas fa-home"></i>
-                <p>
-                  Dashboard
-                </p>
+                <p>Dashboard</p>
               </a>
             </li>
             <?php if ($this->session->userdata("level") < 3) : ?>
@@ -381,35 +364,26 @@ company: https://webdeveloperpku.com -->
                   <i class="nav-icon fas fa-suitcase"></i>
                   <p>
                     Data Master
+                    <i class="nav-arrow bi bi-chevron-right"></i>
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
-                  <li class="nav-item" style="padding-left: 20px;">
+                  <li class="nav-item">
                     <a href="<?= base_url("Pengguna/tampil") ?>" class="nav-link">
-                      <i class="nav-icon fas fa-user-cog"></i>
-                      <p>
-                        Manajemen User
-                      </p>
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Manajemen User</p>
                     </a>
                   </li>
-                </ul>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item" style="padding-left: 20px;">
+                  <li class="nav-item">
                     <a href="<?= base_url("KategoriProduk/tampil") ?>" class="nav-link">
-                      <i class="nav-icon fas fa-tags"></i>
-                      <p>
-                        Kategori Produk
-                      </p>
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Kategori Produk</p>
                     </a>
                   </li>
-                </ul>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item" style="padding-left: 20px;">
+                  <li class="nav-item">
                     <a href="<?= base_url("DataProduk/tampil") ?>" class="nav-link">
-                      <i class="nav-icon fas fa-boxes"></i>
-                      <p>
-                        Data Produk
-                      </p>
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Data Produk</p>
                     </a>
                   </li>
                 </ul>
@@ -421,46 +395,52 @@ company: https://webdeveloperpku.com -->
                   <i class="nav-icon fas fa-file-excel"></i>
                   <p>
                     Laporan
+                    <i class="nav-arrow bi bi-chevron-right"></i>
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
-                  <li class="nav-item" style="padding-left: 20px;">
+                  <li class="nav-item">
                     <a href="<?= base_url("LapPembelian/tampil") ?>" class="nav-link">
-                      <i class="nav-icon fas fa-chart-bar"></i>
-                      <p>
-                        Laporan Pembelian
-                      </p>
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Laporan Pembelian</p>
                     </a>
                   </li>
                 </ul>
               </li>
             <?php } ?>
-          </ul>
-        </nav>
-        <nav class="mt-2 pt-3" style="border-top:1px solid #595959;">
-          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            
+            <li class="nav-header">PENGATURAN</li>
             <li class="nav-item">
-              <a href="#" data-target="#ubah_pass" data-toggle="modal" class="nav-link">
+              <a href="#" data-bs-target="#ubah_pass" data-bs-toggle="modal" class="nav-link">
                 <i class="nav-icon fas fa-lock"></i>
-                <p>
-                  Ubah Password
-                </p>
+                <p>Ubah Password</p>
               </a>
+            </li>
           </ul>
+          <!--end::Sidebar Menu-->
         </nav>
       </div>
+      <!--end::Sidebar Wrapper-->
     </aside>
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-      <!-- Content Header (Page header) -->
-      <section class="content-header">
-        <div class="container">
-        </div><!-- /.container-fluid -->
-      </section>
-      <!-- /.content-header -->
+    <!--end::Sidebar-->
 
-      <!-- Main content -->
-      <div class="content pt-2">
+    <!--begin::App Main-->
+    <main class="app-main">
+      <!--begin::App Content Header-->
+      <div class="app-content-header">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-6">
+              <h3 class="mb-0"><?= $page ?></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--end::App Content Header-->
+
+      <!--begin::App Content-->
+      <div class="app-content">
+        <div class="container-fluid">
 
         <script>
           function logout(id) {
@@ -468,25 +448,33 @@ company: https://webdeveloperpku.com -->
             $("#log_id").val(id);
             $("#jdlKonfirm3").html("<i class='fas fa-sign-out-alt fa-xs'></i> Logout");
             $("#isiKonfirm3").html("Apakah anda ingin Keluar Aplikasi ?");
-            $("#frmKonfirm3").modal({
-              show: true,
-              keyboard: false,
-              backdrop: 'static'
-            });
+            var myModal = new bootstrap.Modal(document.getElementById('frmKonfirm3'));
+            myModal.show();
           }
 
           /** add active class and stay opened when selected */
-          var url = window.location;
-
-          // for sidebar menu entirely but not cover treeview
-          $('ul.nav-sidebar a').filter(function() {
-            return this.href == url;
-          }).addClass('active');
-
-          // for treeview
-          $('ul.nav-treeview a').filter(function() {
-            return this.href == url;
-          }).parentsUntil(".sidebar-menu > .treeview-menu").siblings().removeClass('active menu-open').end().addClass('active menu-open').css({
-            display: "block"
+          document.addEventListener('DOMContentLoaded', function() {
+            var url = window.location.href;
+            
+            // for sidebar menu
+            document.querySelectorAll('.sidebar-menu a').forEach(function(link) {
+              if (link.href === url) {
+                link.classList.add('active');
+                
+                // Open parent menu if in treeview
+                var parent = link.closest('.nav-treeview');
+                if (parent) {
+                  parent.style.display = 'block';
+                  var parentItem = parent.closest('.nav-item');
+                  if (parentItem) {
+                    parentItem.classList.add('menu-open');
+                    var parentLink = parentItem.querySelector(':scope > .nav-link');
+                    if (parentLink) {
+                      parentLink.classList.add('active');
+                    }
+                  }
+                }
+              }
+            });
           });
         </script>

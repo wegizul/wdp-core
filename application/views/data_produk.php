@@ -4,11 +4,11 @@
 			<div class="card mt-3">
 				<div class="card-header">
 					<div class="row">
-						<div class="col-md-6 pl-0">
+						<div class="col-md-6 ps-0">
 							<i class="fas fa-cube mb-3"></i> <?= $page ?>
 						</div>
-						<div class="col-md-6 pl-0">
-							<div class="form-group">
+						<div class="col-md-6 ps-0">
+							<div class="mb-3">
 								<a href="javascript:tambah()" class="btn btn-primary" style="float: right;"><i class="fa fa-plus-circle"></i> &nbsp; Tambah Produk</a>
 							</div>
 						</div>
@@ -16,7 +16,7 @@
 				</div>
 				<div class="card-body table-responsive">
 					<div class="d-flex justify-content-end mb-2">
-						<button class="btn btn-sm bg-gradient-info shadow" onclick="exportPDF()">
+						<button class="btn btn-sm btn-info shadow" onclick="exportPDF()">
 							<i class="fas fa-file-pdf"></i> Export PDF
 						</button>
 					</div>
@@ -45,38 +45,36 @@
 	</div>
 </div>
 
-<div class="modal fade" id="modal_data_produk" role="dialog">
+<div class="modal fade" id="modal_data_produk" tabindex="-1" aria-hidden="true">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h6 class="modal-title"><i class="fas fa-cube"></i> Form Produk</h6>
-				<span type="button" aria-hidden="true" class="close" data-dismiss="modal" aria-label="Close" onclick="reset_form()">&times;</span>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="reset_form()"></button>
 			</div>
 			<form role="form col-lg" name="TambahEdit" id="frm_data_produk">
 				<div class="modal-body form">
 					<div class="row">
 						<input type="hidden" id="prd_id" name="prd_id" value="">
 						<div class="col-lg-4">
-							<div class="form-group">
-								<label>Kode Produk</label>
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text"><i class="fas fa-barcode"></i></span>
-									</div>
+							<div class="mb-3">
+								<label class="form-label">Kode Produk</label>
+								<div class="input-group">
+									<span class="input-group-text"><i class="fas fa-barcode"></i></span>
 									<input type="text" class="form-control" name="prd_kode" id="prd_kode" autocomplete="off" required>
 								</div>
 							</div>
 						</div>
 						<div class="col-lg-8">
-							<div class="form-group">
-								<label>Nama Produk</label>
+							<div class="mb-3">
+								<label class="form-label">Nama Produk</label>
 								<input type="text" class="form-control" name="prd_nama" id="prd_nama" autocomplete="off" required>
 							</div>
 						</div>
 						<div class="col-lg-4">
-							<div class="form-group">
-								<label>Gudang</label>
-								<select class="form-control select2" name="prd_gudang_id" id="prd_gudang_id" style="width: 100%;" required>
+							<div class="mb-3">
+								<label class="form-label">Gudang</label>
+								<select class="form-select select2" name="prd_gudang_id" id="prd_gudang_id" style="width: 100%;" required>
 									<option value="">Pilih</option>
 									<?php foreach ($gudang as $g) { ?>
 										<option value="<?= $g->gd_id ?>"><?= $g->gd_nama ?></option>
@@ -85,9 +83,9 @@
 							</div>
 						</div>
 						<div class="col-lg-4">
-							<div class="form-group">
-								<label>Kategori</label>
-								<select class="form-control select2" name="prd_kategori" id="prd_kategori" style="width: 100%;" required>
+							<div class="mb-3">
+								<label class="form-label">Kategori</label>
+								<select class="form-select select2" name="prd_kategori" id="prd_kategori" style="width: 100%;" required>
 									<option value="">Pilih</option>
 									<?php foreach ($kategori as $k) { ?>
 										<option value="<?= $k->kp_id ?>"><?= $k->kp_nama ?></option>
@@ -96,34 +94,31 @@
 							</div>
 						</div>
 						<div class="col-lg-4">
-							<div class="form-group">
-								<label>Stok Minimal</label>
+							<div class="mb-3">
+								<label class="form-label">Stok Minimal</label>
 								<input type="number" min="0" class="form-control" name="prd_stok_minimal" id="prd_stok_minimal" required>
 							</div>
 						</div>
 						<div class="col-lg-6">
-							<div class="form-group">
-								<label class="d-block mb-2">Konversi Satuan</label>
+							<div class="mb-3">
+								<label class="form-label d-block">Konversi Satuan</label>
 								<div class="row g-2 align-items-center">
 									<div class="col-12 col-md-4">
-										<select class="form-control" name="prd_satuan_konversi" id="prd_satuan_konversi" required>
+										<select class="form-select" name="prd_satuan_konversi" id="prd_satuan_konversi" required>
 											<option value="">Pilih</option>
 											<?php foreach ($satuan as $s) { ?>
 												<option value="<?= $s->sb_id ?>"><?= $s->sb_nama ?></option>
 											<?php } ?>
 										</select>
 									</div>
-
 									<div class="col-auto text-center">
 										<span>=</span>
 									</div>
-
 									<div class="col-12 col-md-3">
 										<input class="form-control" type="number" min="0" name="prd_nilai_konversi" id="prd_nilai_konversi" placeholder="Nilai">
 									</div>
-
 									<div class="col-12 col-md-4">
-										<select class="form-control" name="prd_satuan" id="prd_satuan" required>
+										<select class="form-select" name="prd_satuan" id="prd_satuan" required>
 											<option value="">Pilih</option>
 											<?php foreach ($satuan as $s) { ?>
 												<option value="<?= $s->sb_id ?>"><?= $s->sb_nama ?></option>
@@ -134,8 +129,8 @@
 							</div>
 						</div>
 						<div class="col-lg-6">
-							<div class="form-group">
-								<label>Foto Produk</label><small><i> (ukuran foto 1080 x 1080 pixel)</i></small>
+							<div class="mb-3">
+								<label class="form-label">Foto Produk</label><small><i> (ukuran foto 1080 x 1080 pixel)</i></small>
 								<div id="preview"></div>
 								<input type="file" accept=".jpg, .jpeg, .png" class="form-control" name="prd_foto" id="prd_foto">
 							</div>
@@ -150,12 +145,12 @@
 	</div>
 </div>
 
-<div class="modal fade" id="modal_rincian" tabindex="-1">
+<div class="modal fade" id="modal_rincian" tabindex="-1" aria-hidden="true">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content shadow rounded-3">
 			<div class="modal-header">
 				<h5 class="modal-title">Detail Batch Barang</h5>
-				<span type="button" aria-hidden="true" class="close" data-dismiss="modal" aria-label="Close">&times;</span>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
 				<div class="mb-3 text-center">
@@ -179,33 +174,6 @@
 		</div>
 	</div>
 </div>
-
-<!-- DataTables -->
-<script src="<?= base_url("assets"); ?>/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?= base_url("assets"); ?>/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="<?= base_url("assets"); ?>/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="<?= base_url("assets"); ?>/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="<?= base_url("assets"); ?>/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="<?= base_url("assets"); ?>/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="<?= base_url("assets"); ?>/plugins/datatables-buttons/js/buttons.flash.min.js"></script>
-<script src="<?= base_url("assets"); ?>/plugins/datatables-buttons/js/buttons.colVis.js"></script>
-<script src="<?= base_url("assets"); ?>/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="<?= base_url("assets"); ?>/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="<?= base_url("assets"); ?>/plugins/datatables-buttons/js/pdfmake.min.js"></script>
-<script src="<?= base_url("assets"); ?>/plugins/datatables-buttons/js/vfs_fonts.js"></script>
-<script src="<?= base_url("assets"); ?>/plugins/datatables-buttons/js/jszip.min.js"></script>
-<!-- date-range-picker -->
-<script src="<?= base_url("assets"); ?>/plugins/moment/moment.min.js"></script>
-<script src="<?= base_url("assets"); ?>/plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
-<script src="<?= base_url("assets"); ?>/plugins/daterangepicker/daterangepicker.js"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="<?= base_url("assets"); ?>/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-
-<!-- Select 2 -->
-<script src="<?= base_url("assets"); ?>/plugins/select2/js/select2.full.js"></script>
-
-<!-- Toastr -->
-<script src="<?= base_url("assets"); ?>/plugins/toastr/toastr.min.js"></script>
 
 <!-- This Application made with love by Wegi Zulianda
 author: wegizulianda@gmail.com
@@ -244,11 +212,8 @@ company: https://webdeveloperpku.com -->
 	function tambah() {
 		$("#prd_id").val(0);
 		$("frm_data_produk").trigger("reset");
-		$('#modal_data_produk').modal({
-			show: true,
-			keyboard: false,
-			backdrop: 'static'
-		});
+		var myModal = new bootstrap.Modal(document.getElementById('modal_data_produk'));
+		myModal.show();
 	}
 
 	$("#frm_data_produk").submit(function(e) {
@@ -267,7 +232,7 @@ company: https://webdeveloperpku.com -->
 					toastr.success(res.desc);
 					drawTable();
 					reset_form();
-					$("#modal_data_produk").modal("hide");
+					bootstrap.Modal.getInstance(document.getElementById('modal_data_produk')).hide();
 				} else {
 					toastr.error(res.desc);
 				}
@@ -300,11 +265,8 @@ company: https://webdeveloperpku.com -->
 					}
 				});
 				$(".inputan").attr("disabled", false);
-				$("#modal_data_produk").modal({
-					show: true,
-					keyboard: false,
-					backdrop: 'static'
-				});
+				var myModal = new bootstrap.Modal(document.getElementById('modal_data_produk'));
+				myModal.show();
 				return false;
 			}
 		});
@@ -322,11 +284,8 @@ company: https://webdeveloperpku.com -->
 		$("#prd_id").val(id);
 		$("#jdlKonfirm").html("<i class='fas fa-exclamation-circle fa-sm'></i> Konfirmasi hapus data");
 		$("#isiKonfirm").html("Yakin ingin menghapus data ini ?");
-		$("#frmKonfirm").modal({
-			show: true,
-			keyboard: false,
-			backdrop: 'static'
-		});
+		var myModal = new bootstrap.Modal(document.getElementById('frmKonfirm'));
+		myModal.show();
 	}
 
 	$("#yaKonfirm").click(function() {
@@ -340,7 +299,7 @@ company: https://webdeveloperpku.com -->
 				var res = JSON.parse(d);
 				if (res.success) {
 					toastr.success(res.desc);
-					$("#frmKonfirm").modal("hide");
+					bootstrap.Modal.getInstance(document.getElementById('frmKonfirm')).hide();
 					drawTable();
 				} else {
 					toastr.error(res.desc + " (" + res.err + ")");
@@ -355,11 +314,8 @@ company: https://webdeveloperpku.com -->
 	});
 
 	function lihatBatch(id) {
-		$('#modal_rincian').modal({
-			show: true,
-			keyboard: false,
-			backdrop: 'static'
-		});
+		var myModal = new bootstrap.Modal(document.getElementById('modal_rincian'));
+		myModal.show();
 		ambilBatch(id);
 	}
 
@@ -401,7 +357,7 @@ company: https://webdeveloperpku.com -->
 	}
 
 	$('.select2').select2({
-		className: "form-control"
+		theme: 'bootstrap-5'
 	});
 
 	function exportPDF() {

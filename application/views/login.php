@@ -1,161 +1,162 @@
 <!DOCTYPE html>
-<html class="loading" lang="en" data-textdirection="ltr">
-<!-- BEGIN: Head-->
+<html lang="en">
 
 <!-- This Application made with love by Wegi Zulianda
 author: wegizulianda@gmail.com
 company: https://webdeveloperpku.com -->
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
-	<meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
-	<meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
-	<meta name="author" content="PIXINVENT">
-	<title>Core Aplikasi | Login</title>
-	<link rel="apple-touch-icon" href="<?= base_url('assets/') ?>files/logo.png">
-	<link rel="shortcut icon" type="image/x-icon" href="<?= base_url('assets/') ?>files/logo.png">
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="WDP Core Application - Login">
+  <title>Core Aplikasi | Login</title>
+  
+  <link rel="apple-touch-icon" href="<?= base_url('assets/') ?>files/logo.png">
+  <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('assets/') ?>files/logo.png">
+  
+  <!-- Google Font: Source Sans 3 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css" crossorigin="anonymous">
+  
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" crossorigin="anonymous">
+  
+  <!-- AdminLTE 4 CSS -->
+  <link rel="stylesheet" href="<?= base_url("adminlte4"); ?>/css/adminlte.min.css">
+  
+  <!-- Toastr -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
-	<!-- BEGIN: Vendor CSS-->
-	<link rel="stylesheet" type="text/css" href="<?= base_url('aset/') ?>app-assets/vendors/css/vendors.min.css">
-	<!-- END: Vendor CSS-->
-
-	<!-- BEGIN: Theme CSS-->
-	<link rel="stylesheet" type="text/css" href="<?= base_url('aset/') ?>app-assets/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="<?= base_url('aset/') ?>app-assets/css/bootstrap-extended.css">
-	<link rel="stylesheet" type="text/css" href="<?= base_url('aset/') ?>app-assets/css/colors.css">
-	<link rel="stylesheet" type="text/css" href="<?= base_url('aset/') ?>app-assets/css/components.css">
-	<link rel="stylesheet" type="text/css" href="<?= base_url('aset/') ?>app-assets/css/themes/dark-layout.css">
-	<link rel="stylesheet" type="text/css" href="<?= base_url('aset/') ?>app-assets/css/themes/bordered-layout.css">
-	<link rel="stylesheet" type="text/css" href="<?= base_url('aset/') ?>app-assets/css/themes/semi-dark-layout.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>app-assets/vendors/css/extensions/toastr.min.css">
-
-	<!-- BEGIN: Page CSS-->
-	<link rel="stylesheet" type="text/css" href="<?= base_url('aset/') ?>app-assets/css/core/menu/menu-types/vertical-menu.css">
-	<link rel="stylesheet" type="text/css" href="<?= base_url('aset/') ?>app-assets/css/plugins/forms/form-validation.css">
-	<link rel="stylesheet" type="text/css" href="<?= base_url('aset/') ?>app-assets/css/pages/page-auth.css">
-	<!-- END: Page CSS-->
-
-	<!-- BEGIN: Custom CSS-->
-	<link rel="stylesheet" type="text/css" href="<?= base_url('aset/') ?>assets/css/style.css">
-	<!-- END: Custom CSS-->
-
-	<!-- Toastr -->
-	<link rel="stylesheet" type="text/css" href="<?= base_url('aset/') ?>app-assets/vendors/css/extensions/toastr.min.css">
-
+  <style>
+    .login-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .login-box {
+      width: 400px;
+      max-width: 95%;
+    }
+    
+    .card {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    }
+    
+    .card-header {
+      background: transparent;
+      border-bottom: none;
+      padding: 30px 30px 10px;
+      text-align: center;
+    }
+    
+    .card-body {
+      padding: 20px 30px 30px;
+    }
+    
+    .form-control {
+      padding: 12px 15px;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+    }
+    
+    .form-control:focus {
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.25);
+      border-color: #667eea;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    }
+    
+    .input-group-text {
+      border-radius: 8px 0 0 8px;
+      border: 1px solid #e0e0e0;
+      background: #f8f9fa;
+    }
+    
+    .input-group .form-control {
+      border-radius: 0 8px 8px 0;
+    }
+  </style>
 </head>
-<!-- END: Head-->
 
-<!-- BEGIN: Vendor JS-->
-<script src="<?= base_url('aset/') ?>app-assets/vendors/js/vendors.min.js"></script>
-<script src="<?= base_url('aset/') ?>app-assets/vendors/js/extensions/toastr.min.js"></script>
-<!-- BEGIN Vendor JS-->
+<body class="login-page bg-body-secondary">
+  <div class="login-box">
+    <div class="card">
+      <div class="card-header">
+        <img src="<?= base_url('assets/files/logo.png') ?>" width="60px" class="mb-3">
+        <h4 class="fw-bold mb-0">WDP CORE</h4>
+        <p class="text-muted">Silahkan login untuk melanjutkan</p>
+      </div>
+      <div class="card-body">
+        <form action="<?= base_url("Login/proses"); ?>" method="POST">
+          <div class="mb-3">
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+              <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+            </div>
+          </div>
+          <div class="mb-4">
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+              <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+            </div>
+          </div>
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary">
+              <i class="bi bi-box-arrow-in-right me-2"></i>Login
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
-<!-- This Application made with love by Wegi Zulianda
-author: wegizulianda@gmail.com
-company: https://webdeveloperpku.com -->
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  
+  <!-- Popper.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+  
+  <!-- Bootstrap 5 -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+  
+  <!-- AdminLTE 4 -->
+  <script src="<?= base_url("adminlte4"); ?>/js/adminlte.js"></script>
+  
+  <!-- Toastr -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-<!-- BEGIN: Body-->
+  <script>
+    const notifError = "<?= $this->session->flashdata('error') ?>";
+    const notifSuccess = "<?= $this->session->flashdata('success') ?>";
 
-<body class="vertical-layout vertical-menu-modern blank-page navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="blank-page">
-	<!-- BEGIN: Content-->
-	<div class="app-content content ">
-		<div class="content-overlay"></div>
-		<div class="header-navbar-shadow"></div>
-		<div class="content-wrapper">
-			<div class="content-header row">
-			</div>
-			<div class="content-body">
-				<div class="auth-wrapper auth-v2">
-					<div class="auth-inner row m-0">
-						<!-- Left Text-->
-						<div class="d-none d-lg-flex col-lg-8 align-items-center">
-							<div class="w-100 d-lg-flex align-items-center justify-content-center"><img class="img-fluid" src="<?= base_url('assets/files/background.jpg') ?>" /></div>
-						</div>
-						<!-- /Left Text-->
-						<!-- Login-->
-						<div class="d-flex col-lg-4 align-items-center auth-bg px-2 p-lg-5">
-							<div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
-								<img src="<?= base_url('assets/files/logo.png') ?>" width="50px"> <b style="font-size: 20px;">WDP CORE APPLICATION</b>
-								<h1 class="card-title font-weight-bold mb-1 mt-3"><b>Selamat Datang,</b></h1>
-								<p class="card-text mb-2">Silahkan masukan username dan password untuk login</p>
-								<form class="auth-login-form mt-2" action="<?= base_url("Login/proses"); ?>" method="POST">
-									<div class="form-group">
-										<input class="form-control" id="username" type="text" name="username" placeholder="Masukan Username" tabindex="1" />
-									</div>
-									<div class="form-group">
-										<div class="d-flex justify-content-between">
-											<!-- <a href="page-auth-forgot-password-v2.html"><small>Forgot Password?</small></a> -->
-										</div>
-										<div class="input-group input-group-merge form-password-toggle">
-											<input class="form-control form-control-merge" id="password" type="password" name="password" placeholder="Masukan Password" tabindex="2" />
-											<div class="input-group-append"><span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span></div>
-										</div>
-									</div>
-									<button class="btn btn-blue btn-block" tabindex="4" type="submit">Login</button>
-								</form>
-							</div>
-						</div>
-						<!-- /Login-->
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- END: Content-->
+    $(document).ready(function() {
+      if (notifError) {
+        toastr.error(notifError);
+      } else if (notifSuccess) {
+        toastr.success(notifSuccess);
+      }
+    });
+  </script>
 
-	<!-- BEGIN: Page Vendor JS-->
-	<script src="<?= base_url('aset/') ?>app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
-	<!-- END: Page Vendor JS-->
-
-	<!-- BEGIN: Theme JS-->
-	<script src="<?= base_url('aset/') ?>app-assets/js/core/app-menu.js"></script>
-	<script src="<?= base_url('aset/') ?>app-assets/js/core/app.js"></script>
-	<!-- END: Theme JS-->
-
-	<!-- BEGIN: Page JS-->
-	<script src="<?= base_url('aset/') ?>app-assets/js/scripts/pages/page-auth-login.js"></script>
-	<!-- END: Page JS-->
-
-	<!-- This Application made with love by Wegi Zulianda
-			author: wegizulianda@gmail.com
-			company: https://webdeveloperpku.com -->
-
-	<script>
-		const notifError = "<?= $this->session->flashdata('error') ?>";
-		const notifSuccess = "<?= $this->session->flashdata('success') ?>";
-
-		$(document).ready(function() {
-			if (notifError) {
-				toastr.error(notifError);
-			} else if (notifSuccess) {
-				toastr.success(notifSuccess);
-			}
-		});
-
-		$(window).on('load', function() {
-			if (feather) {
-				feather.replace({
-					width: 14,
-					height: 14
-				});
-			}
-		});
-
-		var base_link = $("#base_link").val();
-		$(function() {
-			$('.list-inline li > a').click(function() {
-				var activeForm = $(this).attr('href') + ' > form';
-				$(activeForm).addClass('magictime swap');
-				//set timer to 1 seconds, after that, unload the magic animation
-				setTimeout(function() {
-					$(activeForm).removeClass('magictime swap');
-				}, 1000);
-			});
-
-		});
-	</script>
+  <!-- This Application made with love by Wegi Zulianda
+  author: wegizulianda@gmail.com
+  company: https://webdeveloperpku.com -->
 </body>
-<!-- END: Body-->
+</html>
