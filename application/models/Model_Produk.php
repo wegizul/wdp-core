@@ -7,7 +7,7 @@
 class Model_Produk extends CI_Model
 {
 	var $table = 'data_produk';
-	var $column_order = array('prd_id', 'prd_nama', 'sb_nama', 'kp_nama', 'prd_harga_modal', 'prd_harga_jual', 'prd_stok'); //set column field database for datatable orderable
+	var $column_order = array('prd_id', 'prd_nama', 'kp_nama', 'prd_harga_modal', 'prd_harga_jual', 'prd_stok'); //set column field database for datatable orderable
 	var $column_search = array('prd_id', 'prd_nama', 'kp_nama', 'prd_harga_modal', 'prd_harga_jual', 'prd_stok'); //set column field database for datatable searchable just firstname , lastname , address are searchable
 	var $order = array('prd_nama' => 'asc'); // default order
 
@@ -20,7 +20,6 @@ class Model_Produk extends CI_Model
 	private function _get_datatables_query()
 	{
 		$this->db->from($this->table);
-		$this->db->join("satuan_barang", "sb_id = prd_satuan", "left");
 		$this->db->join("kategori_produk", "kp_id = prd_kategori", "left");
 		$i = 0;
 
@@ -78,7 +77,6 @@ class Model_Produk extends CI_Model
 	public function get_data_produk()
 	{
 		$this->db->from($this->table);
-		$this->db->join("satuan_barang", "sb_id = prd_satuan", "left");
 		$this->db->join("kategori_produk", "kp_id = prd_kategori", "left");
 		$query = $this->db->get();
 
@@ -88,7 +86,6 @@ class Model_Produk extends CI_Model
 	public function cari_data_produk($id)
 	{
 		$this->db->from($this->table);
-		$this->db->join("satuan_barang", "sb_id = prd_satuan", "left");
 		$this->db->where('prd_id', $id);
 		$query = $this->db->get();
 
